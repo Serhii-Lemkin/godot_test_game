@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = GameVaruables.enemy_speed
-@onready var agent := $NavigationAgent2D as NavigationAgent2D
+@onready var agent := $NavigationAgent2D as NavigationAgent2D  
 
 func _ready():
 	pass
