@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed = GameVaruables.enemy_speed
 @onready var agent := $NavigationAgent2D as NavigationAgent2D
 
+
 func _ready():
 	pass
 
@@ -18,10 +19,11 @@ func _physics_process(_delta: float):
 	var current_position = global_position
 	var next_position = agent.get_next_path_position()
 	var new_velocity = current_position.direction_to(next_position) * speed
-	
 	if agent.avoidance_enabled:
 		agent.set_velocity(new_velocity)
-	else:	_on_navigation_agent_2d_velocity_computed(new_velocity)
+	else:	
+		_on_navigation_agent_2d_velocity_computed(new_velocity)
+		
 	move_and_slide()
 	
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:

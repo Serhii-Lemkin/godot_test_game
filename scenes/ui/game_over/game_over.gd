@@ -4,15 +4,15 @@ extends Control
 
 func _ready() -> void:
 	restart_button.grab_focus() 
-
+	get_tree().paused = true
 
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_parent().queue_free()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-
 
 func _on_main_menu_button_pressed() -> void:
 	Game.go_to_main_menu()

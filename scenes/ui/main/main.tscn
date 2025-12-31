@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=4 uid="uid://155xx7s6y6ta"]
 
-[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://wp4bxhujcbjw" path="res://scripts/game.gd" id="1_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://cohiqpndtgam" path="res://scenes/enemy.tscn" id="2_0wfyh"]
-[ext_resource type="Texture2D" uid="uid://b7v5ghmlqegy4" path="res://textures/new_textures/Ground_Tile_01_C.png" id="2_tefeu"]
-[ext_resource type="Texture2D" uid="uid://dm7hq61p0hjet" path="res://textures/new_textures/Ground_Tile_02_C.png" id="3_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://oe06gj8fh2sh" path="res://textures/new_textures/walls_0000_Layer-1.png" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://wp4bxhujcbjw" path="res://scenes/ui/main/game.gd" id="1_f7o8s"]
+[ext_resource type="Texture2D" uid="uid://b7v5ghmlqegy4" path="res://textures/new_textures/Ground_Tile_01_C.png" id="2_jijnc"]
+[ext_resource type="Texture2D" uid="uid://dm7hq61p0hjet" path="res://textures/new_textures/Ground_Tile_02_C.png" id="3_jfgcv"]
+[ext_resource type="Texture2D" uid="uid://oe06gj8fh2sh" path="res://textures/new_textures/walls_0000_Layer-1.png" id="4_qi6ru"]
+[ext_resource type="PackedScene" uid="uid://cohiqpndtgam" path="res://scenes/characters/enemy1/enemy.tscn" id="5_57h5d"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/characters/player/player.tscn" id="6_40ydf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tipki"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -32,7 +32,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
-texture = ExtResource("2_tefeu")
+texture = ExtResource("2_jijnc")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tipki")
 1:0/0 = 0
@@ -67,7 +67,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_muem4"]
-texture = ExtResource("3_o6xl0")
+texture = ExtResource("3_jfgcv")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_trceg")
 1:0/0 = 0
@@ -83,7 +83,7 @@ sources/0 = SubResource("TileSetAtlasSource_eb6dy")
 sources/1 = SubResource("TileSetAtlasSource_muem4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85g3d"]
-texture = ExtResource("4_tefeu")
+texture = ExtResource("4_qi6ru")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -106,7 +106,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_85g3d")
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_tbgi4")
+script = ExtResource("1_f7o8s")
 
 [node name="tiles" type="Node2D" parent="."]
 
@@ -119,13 +119,13 @@ tile_map_data = PackedByteArray("AADz/wQAAAACAAAAAAD0/wQAAAABAAEAAAD1/wQAAAACAAA
 tile_set = SubResource("TileSet_choun")
 navigation_enabled = false
 
-[node name="enemy" parent="." instance=ExtResource("2_0wfyh")]
+[node name="enemy" parent="." instance=ExtResource("5_57h5d")]
 position = Vector2(253, 63)
 
-[node name="enemy2" parent="." instance=ExtResource("2_0wfyh")]
+[node name="enemy2" parent="." instance=ExtResource("5_57h5d")]
 position = Vector2(355, 132)
 
-[node name="player" parent="." instance=ExtResource("1_o5qli")]
+[node name="player" parent="." instance=ExtResource("6_40ydf")]
 position = Vector2(1, 0)
 
 [node name="static_camera" type="Camera2D" parent="."]

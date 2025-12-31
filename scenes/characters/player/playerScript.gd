@@ -18,8 +18,4 @@ func _physics_process(delta):
 	velocity = direction * playerSpeed
 	move_and_slide()
 
-func _input(event):
-	if event.is_action_pressed("open_menu"):
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-
 	
