@@ -5,14 +5,13 @@ class_name SceneBase
 var current_scene := ''
 
 func _ready():
+	get_tree().paused = false
+	
+func set_game_scene():
 	set_starting_scene()
 	var tree = get_tree()
+	tree.change_scene_to_file(current_scene)
 	tree.paused = false
-	call_deferred("change_scene_deferred")
-	#tree.change_scene_to_file(current_scene)
-	
-func change_scene_deferred():
-	get_tree().change_scene_to_file(current_scene)
 	
 func go_to_main_menu():
 	get_tree().change_scene_to_file(GameVariables.main_menu_name)

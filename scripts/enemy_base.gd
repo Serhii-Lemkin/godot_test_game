@@ -4,7 +4,7 @@ class_name  EnemyBase
 @onready var agent := $NavigationAgent2D as NavigationAgent2D
 
 func _ready() -> void:
-	pass 
+	make_path() 
 
 func _process(delta: float) -> void:
 	pass
@@ -15,7 +15,6 @@ func _physics_process(_delta: float):
 		return
 		
 	if agent.is_target_reached():
-		
 		return
 		
 	var current_position = global_position

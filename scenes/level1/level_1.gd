@@ -1,5 +1,5 @@
 extends SceneBase
-@onready var y_sorting_wtapper: Node2D = $y_sorting_wtapper
+@onready var y_sorting_wtapper: Node2D = $y_sorting_wrapper
 
 func _ready() -> void:
 	pass 
@@ -23,6 +23,9 @@ func is_spawn_allowed() -> bool:
 	
 func get_enemy_count() -> int:
 	var count := 0
+	if y_sorting_wtapper == null:
+		return count
+		
 	for child in y_sorting_wtapper.get_children():
 		if child is Enemy:
 			count += 1
