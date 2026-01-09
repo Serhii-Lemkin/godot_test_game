@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Game="*res://scenes/ui/main/game.gd"
-GameVaruables="*res://scripts/game_varuables.gd"
+Game="*res://scenes/game/game.gd"
+GameVariables="*res://scripts/game_variables.gd"
 
 [display]
 

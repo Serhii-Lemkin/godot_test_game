@@ -1,9 +1,11 @@
-extends CharacterBody2D
+extends CharacterBase
 
-@export var playerSpeed = GameVaruables.player_speed
+@export var playerSpeed = GameVariables.player_speed
 
 func _ready():
+	speed = GameVariables.player_speed
 	Game.player = self
+	facing_right = true
 	add_to_group("player")
 
 func _physics_process(delta):
@@ -14,8 +16,8 @@ func _physics_process(delta):
 
 	if direction.length() > 0:
 		direction = direction.normalized()
-
+		
+	face_direction(direction)
 	velocity = direction * playerSpeed
 	move_and_slide()
-
 	
