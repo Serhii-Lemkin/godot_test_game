@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://cd1aymxkdh8lp"]
+[gd_scene load_steps=19 format=4 uid="uid://cd1aymxkdh8lp"]
 
 [ext_resource type="Script" uid="uid://beamuykbj7h2n" path="res://scenes/level1/level_1.gd" id="1_d6lib"]
 [ext_resource type="Texture2D" uid="uid://b7v5ghmlqegy4" path="res://textures/new_textures/Ground_Tile_01_C.png" id="2_wqsjc"]
 [ext_resource type="Texture2D" uid="uid://dm7hq61p0hjet" path="res://textures/new_textures/Ground_Tile_02_C.png" id="3_fcv37"]
 [ext_resource type="Texture2D" uid="uid://oe06gj8fh2sh" path="res://textures/new_textures/walls_0000_Layer-1.png" id="4_kcfjd"]
-[ext_resource type="PackedScene" uid="uid://cohiqpndtgam" path="res://scenes/characters/enemy1/enemy.tscn" id="5_dpu10"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/characters/player/player.tscn" id="6_q6uuj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tipki"]
@@ -122,13 +121,12 @@ navigation_enabled = false
 [node name="y_sorting_wtapper" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="enemy" parent="y_sorting_wtapper" instance=ExtResource("5_dpu10")]
-position = Vector2(253, 63)
-
-[node name="enemy2" parent="y_sorting_wtapper" instance=ExtResource("5_dpu10")]
-position = Vector2(355, 132)
-
 [node name="player" parent="y_sorting_wtapper" instance=ExtResource("6_q6uuj")]
 position = Vector2(1, 0)
 
 [node name="static_camera" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

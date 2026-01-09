@@ -1,15 +1,18 @@
 extends Node2D
 class_name SceneBase
 
-@onready var player: CharacterBody2D = null
+@onready var player: Player = null
 var current_scene := ''
 
 func _ready():
 	set_starting_scene()
 	var tree = get_tree()
 	tree.paused = false
-	tree.change_scene_to_file(current_scene)
+	call_deferred("change_scene_deferred")
+	#tree.change_scene_to_file(current_scene)
 	
+func change_scene_deferred():
+	get_tree().change_scene_to_file(current_scene)
 	
 func go_to_main_menu():
 	get_tree().change_scene_to_file(GameVariables.main_menu_name)

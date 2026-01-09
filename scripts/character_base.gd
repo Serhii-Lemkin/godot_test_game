@@ -4,6 +4,7 @@ class_name CharacterBase
 @onready var sprite: Sprite2D = $Sprite2D
 @export var speed = 0
 @export var facing_right: bool
+@export var weapon_facing_direction: Vector2
 
 func _ready() -> void:
 	pass 

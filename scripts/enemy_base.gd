@@ -42,3 +42,10 @@ func _on_timer_timeout():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		Game.game_over()
+		
+func take_damage(dmg: float)-> void:
+	print("dmg")
+	death_and_despawn()
+	
+func death_and_despawn():
+	self.queue_free()
