@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bovwh7dy8sv0q"]
+
+[ext_resource type="Script" uid="uid://c618nmlfimkds" path="res://scenes/ui/top_ui/top_ui.gd" id="1_c3x8v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3x8v"]
+bg_color = Color(0.35906905, 0.35906908, 0.35906896, 1)
+
+[node name="TopUi" type="CanvasLayer"]
+script = ExtResource("1_c3x8v")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Panel" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c3x8v")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "fdsafdsafsadfasdfasdfasdfasdf"

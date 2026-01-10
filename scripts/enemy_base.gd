@@ -4,6 +4,7 @@ class_name  EnemyBase
 @onready var health_bar: HealthBar = $HealthBar
 @onready var agent := $NavigationAgent2D as NavigationAgent2D
 var knockback_velocity: Vector2 = Vector2.ZERO
+var kill_score: int
 
 func _ready() -> void:
 	pass
@@ -72,6 +73,8 @@ func knock_back():
 	
 	
 func death_and_despawn():
+	
+	Game.add_score(kill_score)
 	self.queue_free()
 	
 func instansiate_inner(): pass

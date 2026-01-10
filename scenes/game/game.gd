@@ -2,6 +2,9 @@ extends Node2D
 class_name SceneBase
 
 @onready var player: Player = null
+
+signal score_changed(new_score: int)
+
 var current_scene := ''
 
 func _ready():
@@ -36,6 +39,11 @@ func _input(event):
 		
 func set_starting_scene():
 	current_scene = "res://scenes/level1/level1.tscn"
+	
+var score: int = 0
+
+func add_score(amount: int) -> void:
+	score_changed.emit(amount)
 	
 	
 	

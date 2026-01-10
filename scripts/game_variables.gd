@@ -16,6 +16,7 @@ var knife_rotation_speed := 10.0
 var knife_min_swing_speed := 7.0
 #enemy
 var enemy_max_health :int = 50
+var enemy_kill_score :int = 20
 var enemy_speed := 120.0
 const enemy_spawn_chance := 0.20      
 const max_enemies := 15

@@ -17,6 +17,5 @@ texture = ExtResource("2_qhqgy")
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 
 [node name="Knife" parent="." instance=ExtResource("3_686vu")]
