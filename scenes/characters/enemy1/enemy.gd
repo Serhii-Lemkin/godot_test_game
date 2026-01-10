@@ -2,8 +2,10 @@ extends EnemyBase
 
 class_name Enemy
 
-func _ready():
+func instansiate_inner():
 	facing_right = false
 	speed = GameVariables.enemy_speed
+	max_health = GameVariables.enemy_max_health
+	current_health = GameVariables.enemy_max_health
 	
 	

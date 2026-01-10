@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8y8g078oysm8"]
+[gd_scene load_steps=6 format=3 uid="uid://b8y8g078oysm8"]
 
 [ext_resource type="Script" uid="uid://0u1ly3sra4is" path="res://scenes/weapons/knife/knife.gd" id="1_3d3jq"]
 [ext_resource type="Texture2D" uid="uid://ca3c28k8maww4" path="res://textures/weapons/knife_big.png" id="1_yp3py"]
@@ -9,12 +9,34 @@ size = Vector2(10, 35)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3d3jq"]
 lifetime_randomness = 0.3
 particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
 direction = Vector3(0.1, 0, 0)
 spread = 25.0
-initial_velocity_min = 30.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 47.909996
+linear_accel_max = 73.689995
+damping_min = 0.24000001
+damping_max = 76.106
+scale_min = 0.5
+scale_max = 4.0
+color = Color(0.79396635, 0.12645319, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_53qgy"]
+lifetime_randomness = 0.06
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 2, 1)
+direction = Vector3(0.1, 0, 0)
+spread = 25.0
+initial_velocity_min = 12.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 98, 0)
-color = Color(1, 0.91764706, 0.5803922, 1)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 99.99999
+scale_max = 3.0
+color = Color(1, 0.90588236, 0.21960784, 1)
 
 [node name="Knife" type="Node2D"]
 script = ExtResource("1_3d3jq")
@@ -32,9 +54,26 @@ rotation = 1.5707964
 position = Vector2(-2.5789718e-06, -59)
 shape = SubResource("RectangleShape2D_yp3py")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="BloodParticles" type="GPUParticles2D" parent="."]
+z_index = 4096
 position = Vector2(60, 0)
 emitting = false
-amount = 40
-lifetime = 0.4
+amount = 500
+lifetime = 1.5
+interp_to_end = 0.05
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.05
+trail_sections = 10
+trail_section_subdivisions = 3
 process_material = SubResource("ParticleProcessMaterial_3d3jq")
+
+[node name="SlownessParticless" type="GPUParticles2D" parent="."]
+position = Vector2(60, 0)
+emitting = false
+amount = 45
+lifetime = 0.56
+randomness = 0.09
+process_material = SubResource("ParticleProcessMaterial_53qgy")

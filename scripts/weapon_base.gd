@@ -2,7 +2,8 @@ extends Node2D
 class_name WeaponBase
 
 @onready var area := $Area2D
-@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+@onready var gpu_particles_2d: GPUParticles2D = $SlownessParticless
+@onready var blood_particles: GPUParticles2D = $BloodParticles
 
 @export var damage = 0.0
 
@@ -15,6 +16,7 @@ var angular_speed: float
 var weapon_length: float = 0.0
 var weapon_slowed := false
 var show_slowness_particles := false
+var show_blood_particles := false
 
 func _ready() -> void:
 	pass
@@ -58,19 +60,21 @@ func check_is_weapon_stuck(next_rotation: float, current_rotation: float) -> boo
 	return not space_state.intersect_ray(query).is_empty()
 	
 func _on_area_body_entered(body):
-	_on_area_body_entered_inner(body)
+	var valid_colision = _on_area_body_entered_inner(body)
+	if valid_colision:
+		blood_particles.restart()
 	
 func _process(delta: float) -> void:
 	draw(delta)
 	process_inner()
 	gpu_particles_2d.emitting = weapon_slowed or show_slowness_particles
+	#blood_particles.emitting = show_blood_particles
+	
 	
 func shortest_angle_distance(a: float, b: float) -> float:
 	var diff = fmod(a - b + PI, 2 * PI) - PI
 	return diff
 	
-func process_inner():
-	pass
+func process_inner(): pass
 	
-func _on_area_body_entered_inner(body):
-	pass 
+func _on_area_body_entered_inner(body): pass 

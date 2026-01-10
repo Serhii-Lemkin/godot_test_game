@@ -17,10 +17,15 @@ func process_inner():
 
 
 func _on_area_body_entered_inner(body):
-	print(angular_speed) 
 	if angular_speed > GameVariables.knife_min_swing_speed and body is EnemyBase:
-		body.take_damage(damage)
+		body.take_damage(damage + (angular_speed
+		 * 0.2))
+		return true
+		
+	return false
+
+		#show_blood_particles = true
+		#await get_tree().create_timer(0.2).timeout
+		#show_blood_particles = false
 	
-	show_slowness_particles = true
-	await get_tree().create_timer(0.5).timeout
-	show_slowness_particles = false
+	

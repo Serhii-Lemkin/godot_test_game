@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cohiqpndtgam"]
+[gd_scene load_steps=6 format=3 uid="uid://cohiqpndtgam"]
 
 [ext_resource type="Texture2D" uid="uid://blgjwb101vf3g" path="res://textures/tmpTextures/enemy_sm.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://bpltomdk7rp2p" path="res://scenes/characters/enemy1/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://dydsd1cmt26nx" path="res://scenes/health_bar/health_bar.tscn" id="3_52w2f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
 radius = 17.0
@@ -36,6 +37,8 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_4ra3w")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_52w2f")]
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

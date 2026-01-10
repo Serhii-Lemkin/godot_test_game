@@ -6,6 +6,9 @@ class_name CharacterBase
 @export var facing_right: bool
 @export var weapon_facing_direction: Vector2
 
+var max_health: int
+var current_health: int
+
 func _ready() -> void:
 	pass 
 

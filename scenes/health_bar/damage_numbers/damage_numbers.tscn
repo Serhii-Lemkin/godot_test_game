@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvmoqo6wbk4bi"]
+
+[ext_resource type="Script" uid="uid://dgj8cqhesq7lg" path="res://scenes/health_bar/damage_numbers/damage_numbers.gd" id="1_rlepd"]
+
+[node name="DamageNumbers" type="Node2D"]
+script = ExtResource("1_rlepd")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

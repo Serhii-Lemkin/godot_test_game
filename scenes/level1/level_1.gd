@@ -1,5 +1,5 @@
 extends SceneBase
-@onready var y_sorting_wtapper: Node2D = $y_sorting_wrapper
+@onready var y_sorting_wrapper: Node2D = $y_sorting_wrapper
 
 func _ready() -> void:
 	pass 
@@ -23,10 +23,10 @@ func is_spawn_allowed() -> bool:
 	
 func get_enemy_count() -> int:
 	var count := 0
-	if y_sorting_wtapper == null:
+	if y_sorting_wrapper == null:
 		return count
 		
-	for child in y_sorting_wtapper.get_children():
+	for child in y_sorting_wrapper.get_children():
 		if child is Enemy:
 			count += 1
 	return count
@@ -37,9 +37,11 @@ func spawn_enemy():
 		return
 		
 	var enemy_scene =  preload("res://scenes/characters/enemy1/enemy.tscn")
-	var enemy := enemy_scene.instantiate()
+	var enemy := enemy_scene.instantiate() as EnemyBase  
 	enemy.global_position = pos
-	y_sorting_wtapper.add_child(enemy)
+	y_sorting_wrapper.add_child(enemy)
+	enemy.instansiate()
+	
 	
 func random_point_around(origin: Vector2, min_radius: float, max_radius: float) -> Vector2:
 	var angle = randf() * TAU
