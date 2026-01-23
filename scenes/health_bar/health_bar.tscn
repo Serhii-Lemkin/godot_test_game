@@ -11,6 +11,7 @@ bg_color = Color(0.48235294, 0, 0, 1)
 bg_color = Color(0, 0.42352942, 0.14117648, 1)
 
 [node name="HealthBar" type="Node2D"]
+z_index = 4096
 script = ExtResource("1_qy603")
 
 [node name="Bar" type="ProgressBar" parent="."]
@@ -26,3 +27,4 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_n3ttx")
 show_percentage = false
 
 [node name="DamageLayer" type="Node2D" parent="."]
+z_index = 4096

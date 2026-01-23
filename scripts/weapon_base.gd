@@ -17,6 +17,11 @@ var weapon_length: float = 0.0
 var weapon_slowed := false
 var show_slowness_particles := false
 var show_blood_particles := false
+var atack_finished: bool = true
+var apply_atack: bool = false
+var aim_rotation := 0.0
+var swing_offset := 0.0
+var prev_non_zero_dir: Vector2
 
 func _ready() -> void:
 	pass
@@ -28,16 +33,18 @@ func draw(delta: float):
 	var dir = Game.player.weapon_facing_direction
 	if dir.length() == 0:
 		weapon_slowed = check_is_weapon_stuck(rotation, rotation)
-		return
-		
-	var target_rotation = dir.angle() 
-	var next_rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
+		previous_rotation = rotation
+		dir = prev_non_zero_dir
+	else:
+		prev_non_zero_dir = dir
 	
+	var target_rotation = dir.angle() 
+	aim_rotation = lerp_angle(rotation + swing_offset, target_rotation, rotation_speed * delta)
 	weapon_slowed = check_is_weapon_stuck(rotation, rotation)
 	if weapon_slowed:
-		next_rotation = lerp_angle(rotation, target_rotation, (rotation_speed / GameVariables.weapon_obsticle_speed_debuf) * delta)
+		aim_rotation = lerp_angle(rotation+ (swing_offset / GameVariables.weapon_obsticle_speed_debuf), target_rotation, (rotation_speed / GameVariables.weapon_obsticle_speed_debuf) * delta)
 		
-	rotation = next_rotation
+	rotation = aim_rotation 
 	angular_speed = abs(shortest_angle_distance(rotation, previous_rotation)) / delta
 	previous_rotation = rotation
 
@@ -61,14 +68,22 @@ func check_is_weapon_stuck(next_rotation: float, current_rotation: float) -> boo
 	
 func _on_area_body_entered(body):
 	var valid_colision = _on_area_body_entered_inner(body)
-	if valid_colision:
-		blood_particles.restart()
+
+	if not valid_colision:
+		show_slowness_particles = true
+		await get_tree().create_timer(0.1).timeout
+		show_slowness_particles = false
 	
 func _process(delta: float) -> void:
-	draw(delta)
 	process_inner()
+	if Game.player.isAttacking:
+		start_attack_inner()
+		apply_atack = false
+	else:
+		apply_atack = true
+		
+	draw(delta)
 	gpu_particles_2d.emitting = weapon_slowed or show_slowness_particles
-	#blood_particles.emitting = show_blood_particles
 	
 	
 func shortest_angle_distance(a: float, b: float) -> float:
@@ -76,5 +91,5 @@ func shortest_angle_distance(a: float, b: float) -> float:
 	return diff
 	
 func process_inner(): pass
-	
+func start_attack_inner(): pass
 func _on_area_body_entered_inner(body): pass 

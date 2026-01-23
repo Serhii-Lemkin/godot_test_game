@@ -8,6 +8,8 @@ class_name CharacterBase
 
 var max_health: int
 var current_health: int
+var crit_chance: float
+var crit_multiplier: float
 
 func _ready() -> void:
 	pass 

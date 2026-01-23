@@ -2,9 +2,10 @@ extends SceneBase
 @onready var y_sorting_wrapper: Node2D = $y_sorting_wrapper
 
 func _ready() -> void:
-	pass 
+	for i in range(10):
+		spawn_enemy() 
 
-func _on_timer_timeout() -> void:
+func _on_timer_timeout() -> void:	
 	if is_spawn_allowed():
 		spawn_enemy()
 		
@@ -51,7 +52,7 @@ func random_point_around(origin: Vector2, min_radius: float, max_radius: float) 
 func get_valid_spawn_position(player_pos: Vector2) -> Vector2:
 	var nav_map := get_world_2d().navigation_map
 	var attempts := 12
-	for i in attempts:
+	for i in range(attempts):
 		var candidate = random_point_around(player_pos, GameVariables.spawn_around_player_min_radius, GameVariables.spawn_around_player_min_radius)
 
 		var nav_point = NavigationServer2D.map_get_closest_point(nav_map, candidate)
