@@ -44,7 +44,11 @@ var score: int = 0
 
 func add_score(amount: int) -> void:
 	score_changed.emit(amount)
+
+func _process(delta: float) -> void:
+	process_inner(delta)
 	
+func process_inner(delta: float): pass
 	
 	
 	

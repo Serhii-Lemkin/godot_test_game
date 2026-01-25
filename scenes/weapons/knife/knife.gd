@@ -3,8 +3,7 @@ extends WeaponBase
 var swing_limit_reached = false
 @onready var knife: Node2D = $"."
 
-func _ready() -> void:
-	area.connect("body_entered", Callable(self, "_on_area_body_entered"))
+func ready_inner() -> void:
 	damage = GameVariables.knife_dmg
 	offset_distance = GameVariables.knife_offset_distance
 	angle_correction = GameVariables.knife_angle_correction

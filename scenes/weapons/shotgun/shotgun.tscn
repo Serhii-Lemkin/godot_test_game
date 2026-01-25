@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8y8g078oysm8"]
+[gd_scene load_steps=6 format=3 uid="uid://clehv2a3qigov"]
 
-[ext_resource type="Script" uid="uid://0u1ly3sra4is" path="res://scenes/weapons/knife/knife.gd" id="1_3d3jq"]
-[ext_resource type="Texture2D" uid="uid://ba207faux5mpp" path="res://textures/weapons/knife_big.png" id="1_yp3py"]
+[ext_resource type="Script" uid="uid://uktlxfyvii75" path="res://scenes/weapons/shotgun/shotgun.gd" id="1_ph3d6"]
+[ext_resource type="Texture2D" uid="uid://cop18erdwq2u1" path="res://textures/weapons/shotgun.png" id="2_dw2pe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp3py"]
-size = Vector2(10, 35)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awu0a"]
+size = Vector2(12.999998, 51.552338)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3d3jq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p880n"]
 lifetime_randomness = 0.3
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(20, 1, 1)
+emission_box_extents = Vector3(7, 1, 1)
 direction = Vector3(0.1, 0, 0)
 spread = 25.0
 initial_velocity_max = 120.0
@@ -23,11 +23,11 @@ scale_min = 0.5
 scale_max = 4.0
 color = Color(0.79396635, 0.12645319, 0, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_53qgy"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ereug"]
 lifetime_randomness = 0.06
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(20, 2, 1)
+emission_box_extents = Vector3(10, 2, 1)
 direction = Vector3(0.1, 0, 0)
 spread = 25.0
 initial_velocity_min = 12.0
@@ -38,26 +38,25 @@ linear_accel_max = 99.99999
 scale_max = 3.0
 color = Color(1, 0.90588236, 0.21960784, 1)
 
-[node name="Knife" type="Node2D"]
-script = ExtResource("1_3d3jq")
-damage = null
+[node name="Shotgun" type="Node2D"]
+script = ExtResource("1_ph3d6")
+metadata/_custom_type_script = "uid://dhixiug8snyjf"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(50, 0)
-rotation = 1.5707964
-scale = Vector2(0.06, 0.06)
-texture = ExtResource("1_yp3py")
+position = Vector2(48.030296, 3)
+scale = Vector2(0.06060605, 0.060606062)
+texture = ExtResource("2_dw2pe")
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = 1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2.5789718e-06, -59)
-shape = SubResource("RectangleShape2D_yp3py")
+position = Vector2(0.52261513, -54.22383)
+shape = SubResource("RectangleShape2D_awu0a")
 
 [node name="BloodParticles" type="GPUParticles2D" parent="."]
 z_index = 4096
-position = Vector2(60, 0)
+position = Vector2(57.697662, -0.9773824)
 emitting = false
 amount = 500
 lifetime = 1.5
@@ -69,12 +68,12 @@ trail_enabled = true
 trail_lifetime = 0.05
 trail_sections = 10
 trail_section_subdivisions = 3
-process_material = SubResource("ParticleProcessMaterial_3d3jq")
+process_material = SubResource("ParticleProcessMaterial_p880n")
 
 [node name="SlownessParticless" type="GPUParticles2D" parent="."]
-position = Vector2(60, 0)
+position = Vector2(54.697662, -0.9773824)
 emitting = false
 amount = 45
 lifetime = 0.56
 randomness = 0.09
-process_material = SubResource("ParticleProcessMaterial_53qgy")
+process_material = SubResource("ParticleProcessMaterial_ereug")

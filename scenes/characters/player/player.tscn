@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=4 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://i7j6jeb8t3xq" path="res://scenes/characters/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b4452h7wb4dgv" path="res://textures/tmpTextures/player_sm.png" id="2_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://b8y8g078oysm8" path="res://scenes/weapons/knife/knife.tscn" id="3_686vu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 19.0
@@ -18,4 +17,8 @@ shape = SubResource("CircleShape2D_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Knife" parent="." instance=ExtResource("3_686vu")]
+[node name="WeaponContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

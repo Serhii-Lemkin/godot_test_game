@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://p3evpm6u0mlv"]
+
+[ext_resource type="Script" uid="uid://dmng2r7ed0re0" path="res://scenes/ui/weapon_wheel/selection_wheel.gd" id="1_bn2b7"]
+
+[node name="SelectionWheel" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_bn2b7")
+bck_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
+line_color = Color(0.80616075, 0.80616075, 0.8061606, 1)
+selected_color = Color(0.661081, 0.661081, 0.6610809, 1)

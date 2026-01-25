@@ -18,6 +18,8 @@ var knife_angle_correction := 90.0
 var knife_rotation_speed := 10.0
 var knife_min_swing_speed := 7.0
 var knife_swing_degree := 25.0
+#pistol
+
 #enemy
 var enemy_max_health :int = 50
 var enemy_kill_score :int = 20

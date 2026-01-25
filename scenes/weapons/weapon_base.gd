@@ -1,6 +1,7 @@
 extends Node2D
 class_name WeaponBase
 
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var area := $Area2D
 @onready var gpu_particles_2d: GPUParticles2D = $SlownessParticless
 @onready var blood_particles: GPUParticles2D = $BloodParticles
@@ -24,7 +25,8 @@ var swing_offset := 0.0
 var prev_non_zero_dir: Vector2
 
 func _ready() -> void:
-	pass
+	area.connect("body_entered", Callable(self, "_on_area_body_entered"))
+	ready_inner()
 
 func draw(delta: float):
 	if Game.player == null:
@@ -76,6 +78,7 @@ func _on_area_body_entered(body):
 	
 func _process(delta: float) -> void:
 	process_inner()
+	face_direction()
 	if Game.player.isAttacking:
 		start_attack_inner()
 		apply_atack = false
@@ -84,8 +87,7 @@ func _process(delta: float) -> void:
 		
 	draw(delta)
 	gpu_particles_2d.emitting = weapon_slowed or show_slowness_particles
-	
-	
+		
 func shortest_angle_distance(a: float, b: float) -> float:
 	var diff = fmod(a - b + PI, 2 * PI) - PI
 	return diff
@@ -93,3 +95,5 @@ func shortest_angle_distance(a: float, b: float) -> float:
 func process_inner(): pass
 func start_attack_inner(): pass
 func _on_area_body_entered_inner(body): pass 
+func face_direction() -> void: pass
+func ready_inner() -> void: pass
