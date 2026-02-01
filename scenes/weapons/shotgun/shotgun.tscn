@@ -77,3 +77,6 @@ amount = 45
 lifetime = 0.56
 randomness = 0.09
 process_material = SubResource("ParticleProcessMaterial_ereug")
+
+[node name="BulletPoint" type="Node2D" parent="."]
+position = Vector2(84, 0)

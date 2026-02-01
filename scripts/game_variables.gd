@@ -12,14 +12,38 @@ var weapon_obsticle_speed_debuf = 20.0
 var knife_scene_name := "res://scenes/weapons/knife/knife.tscn"
 var knife_dmg := 7
 var knife_length := 60
-var knife_animation_speed := 10.0
 var knife_offset_distance := 20.0
 var knife_angle_correction := 90.0
 var knife_rotation_speed := 10.0
 var knife_min_swing_speed := 7.0
 var knife_swing_degree := 25.0
 #pistol
-
+var pistol_damage := 15.0
+var pistol_bullet_speed := 400.0
+var pistol_cooldown = 1.0
+var pistol_offset_distance := 20.0
+var pistol_angle_correction := 90.0
+var pistol_rotation_speed := 15.0
+var pistol_min_swing_speed := 3.0
+var pistol_length := 30.0
+#rifle
+var rifle_damage := 30.0
+var rifle_bullet_speed := 600.0
+var rifle_cooldown = 0.15
+var rifle_offset_distance := 20.0
+var rifle_angle_correction := 90.0
+var rifle_rotation_speed := 10.0
+var rifle_min_swing_speed := 3.0
+var rifle_length := 70.0
+#shotgun
+var shotgun_damage := 7.0
+var shotgun_bullet_speed := 500.0
+var shotgun_cooldown = 1.3
+var shotgun_offset_distance := 20.0
+var shotgun_angle_correction := 90.0
+var shotgun_rotation_speed := 8.0
+var shotgun_min_swing_speed := 3.0
+var shotgun_length := 70.0
 #enemy
 var enemy_max_health :int = 50
 var enemy_kill_score :int = 20

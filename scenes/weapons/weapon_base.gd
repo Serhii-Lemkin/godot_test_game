@@ -8,7 +8,6 @@ class_name WeaponBase
 
 @export var damage = 0.0
 
-var animation_speed := 0.0
 var offset_distance := 0.0
 var angle_correction := 0.0
 var rotation_speed := 1.0

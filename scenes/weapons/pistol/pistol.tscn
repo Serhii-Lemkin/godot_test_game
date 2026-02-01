@@ -42,7 +42,7 @@ color = Color(1, 0.90588236, 0.21960784, 1)
 script = ExtResource("1_unxgq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(31.705162, 2.4999962)
+position = Vector2(36.705162, 5.499996)
 scale = Vector2(0.030694649, 0.030694656)
 texture = ExtResource("2_bvgyv")
 
@@ -50,12 +50,12 @@ texture = ExtResource("2_bvgyv")
 rotation = 1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.5000014, -33.45517)
+position = Vector2(1.4999979, -38.45517)
 shape = SubResource("RectangleShape2D_bvgyv")
 
 [node name="BloodParticles" type="GPUParticles2D" parent="."]
 z_index = 4096
-position = Vector2(37, -3)
+position = Vector2(42, -4.7683716e-07)
 emitting = false
 amount = 500
 lifetime = 1.5
@@ -70,9 +70,12 @@ trail_section_subdivisions = 3
 process_material = SubResource("ParticleProcessMaterial_nrugr")
 
 [node name="SlownessParticless" type="GPUParticles2D" parent="."]
-position = Vector2(34, -3)
+position = Vector2(39, -4.7683716e-07)
 emitting = false
 amount = 45
 lifetime = 0.56
 randomness = 0.09
 process_material = SubResource("ParticleProcessMaterial_eitid")
+
+[node name="BulletPoint" type="Node2D" parent="."]
+position = Vector2(62, 0)

@@ -13,7 +13,6 @@ func _ready():
 	
 func equip_weapon(weapon: Weapon.WeaponType):
 	var weapon_scene = null
-	print(weapon)
 	match weapon:
 		Weapon.WeaponType.KNIFE:
 			weapon_scene =  load("res://scenes/weapons/knife/knife.tscn").instantiate()

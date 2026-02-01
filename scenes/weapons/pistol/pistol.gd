@@ -2,12 +2,13 @@ extends FirearmBase
 
 @onready var pistol: Node2D = $"."
 func ready_inner() -> void:
-	damage = GameVariables.knife_dmg
-	offset_distance = GameVariables.knife_offset_distance
-	angle_correction = GameVariables.knife_angle_correction
-	animation_speed = GameVariables.knife_animation_speed
-	rotation_speed = GameVariables.knife_rotation_speed
-	weapon_length = GameVariables.knife_length
+	damage = GameVariables.pistol_damage
+	offset_distance = GameVariables.pistol_offset_distance
+	angle_correction = GameVariables.pistol_angle_correction
+	rotation_speed = GameVariables.pistol_rotation_speed
+	weapon_length = GameVariables.pistol_length
+	bullet_speed = GameVariables.pistol_bullet_speed
+	cooldown = GameVariables.pistol_cooldown
 
 func face_direction() -> void:
 	var angle := rotation

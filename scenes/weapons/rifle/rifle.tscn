@@ -39,7 +39,6 @@ scale_max = 3.0
 color = Color(1, 0.90588236, 0.21960784, 1)
 
 [node name="Rifle" type="Node2D"]
-position = Vector2(6, 0)
 script = ExtResource("1_upv3j")
 metadata/_custom_type_script = "uid://dhixiug8snyjf"
 
@@ -78,3 +77,6 @@ amount = 45
 lifetime = 0.56
 randomness = 0.09
 process_material = SubResource("ParticleProcessMaterial_gy1q2")
+
+[node name="BulletPoint" type="Node2D" parent="."]
+position = Vector2(68, 0)
