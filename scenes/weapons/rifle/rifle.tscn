@@ -47,8 +47,6 @@ metadata/_custom_type_script = "uid://dhixiug8snyjf"
 position = Vector2(36, 2)
 scale = Vector2(0.0576271, 0.05762712)
 texture = ExtResource("2_hx47o")
-offset = Vector2(0, -75)
-flip_v = true
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = 1.5707964

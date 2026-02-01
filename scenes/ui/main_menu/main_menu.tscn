@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://2yvq6yiiep7y"]
+[gd_scene load_steps=3 format=3 uid="uid://2yvq6yiiep7y"]
 
 [ext_resource type="Script" uid="uid://diogpnw6nc1vc" path="res://scenes/ui/main_menu/main_menu.gd" id="1_1ch07"]
+[ext_resource type="Texture2D" uid="uid://j038fgu81656" path="res://backgroun_huge_2.png" id="2_e8t4i"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ch07")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -257.0
+offset_top = -130.0
+offset_right = 1565.0
+offset_bottom = 1692.0
+texture = ExtResource("2_e8t4i")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
