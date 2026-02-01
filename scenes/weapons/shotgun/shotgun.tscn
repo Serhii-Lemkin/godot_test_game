@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cop18erdwq2u1" path="res://textures/weapons/shotgun.png" id="2_dw2pe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awu0a"]
-size = Vector2(12.999998, 51.552338)
+size = Vector2(14.022616, 51.552338)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p880n"]
 lifetime_randomness = 0.3
@@ -43,15 +43,17 @@ script = ExtResource("1_ph3d6")
 metadata/_custom_type_script = "uid://dhixiug8snyjf"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(48.030296, 3)
+position = Vector2(48.000004, 5)
 scale = Vector2(0.06060605, 0.060606062)
 texture = ExtResource("2_dw2pe")
+offset = Vector2(0, -150)
+flip_v = true
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = 1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.52261513, -54.22383)
+position = Vector2(0.011306002, -54.22383)
 shape = SubResource("RectangleShape2D_awu0a")
 
 [node name="BloodParticles" type="GPUParticles2D" parent="."]

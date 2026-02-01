@@ -40,18 +40,21 @@ color = Color(1, 0.90588236, 0.21960784, 1)
 
 [node name="Rifle" type="Node2D"]
 script = ExtResource("1_upv3j")
+damage = null
 metadata/_custom_type_script = "uid://dhixiug8snyjf"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(35.784733, 0.50000024)
+position = Vector2(36, 2)
 scale = Vector2(0.0576271, 0.05762712)
 texture = ExtResource("2_hx47o")
+offset = Vector2(0, -75)
+flip_v = true
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = 1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2.0000017, -39.698708)
+position = Vector2(-1.7881393e-06, -41)
 shape = SubResource("RectangleShape2D_oaqv7")
 
 [node name="BloodParticles" type="GPUParticles2D" parent="."]

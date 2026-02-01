@@ -22,6 +22,6 @@ func start_attack_inner() -> void:
 		bullet.start_position = bullet_point.global_position
 		bullet.damage = damage
 		bullet.speed = bullet_speed
-		get_parent().add_child(bullet)
+		Game.player.get_parent().add_child(bullet)
 		await get_tree().create_timer(cooldown).timeout
 		is_on_cooldown = false

@@ -32,3 +32,7 @@ func face_direction() -> void:
 	var angle := rotation
 	var facing_right: bool = abs(wrapf(angle, -PI, PI)) < PI * 0.5
 	sprite.flip_v = not facing_right
+	if sprite.flip_v:
+		sprite.offset.y = -150.0
+	else:
+		sprite.offset.y = 0.0
