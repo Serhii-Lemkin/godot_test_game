@@ -1,9 +1,12 @@
 extends Node
 #player
 var player_speed := 200.0
+var player_dodge_speed := 700.0
+var player_dodge_time := 0.2
 var player_crit_chance:= 0.1
 var player_crit_multiplier := 2.0
 var player_rotation_atack_debuff := 0.2
+var player_health := 200
 var spawn_around_player_min_radius := 400.0
 var spawn_around_player_max_radius := 5000.0
 #weapons
@@ -52,6 +55,11 @@ const enemy_spawn_chance := 0.24
 const max_enemies := 30
 var enemy_knockback_strength := 600.0
 var enemy_knockback_friction := 900.0
+var enemy_attack_distance:= 90.0
+var enemy_attack_speed := 700.0
+var enemy_attack_time := 0.2
+var enemy_damage := 10
+var enemy_atack_cooldown = 0.8
 #scenes
 var game_scene_name := "res://scenes/game/game.tscn"
 var pause_menu_name := "res://scenes/ui/pause_menu/pause_menu.tscn"

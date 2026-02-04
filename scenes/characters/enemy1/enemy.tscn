@@ -11,10 +11,15 @@ radius = 17.0
 radius = 21.023796
 
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 1.0
 script = ExtResource("1_md0e3")
+speed = null
+facing_right = null
+weapon_facing_direction = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7p1mj")
@@ -34,8 +39,11 @@ wait_time = 0.5
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="AreColisionShape" type="CollisionShape2D" parent="Area2D"]
+physics_interpolation_mode = 2
 shape = SubResource("CircleShape2D_4ra3w")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_52w2f")]

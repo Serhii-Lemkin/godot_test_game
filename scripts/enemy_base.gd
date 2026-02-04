@@ -3,8 +3,13 @@ class_name  EnemyBase
 
 @onready var health_bar: HealthBar = $HealthBar
 @onready var agent := $NavigationAgent2D as NavigationAgent2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
 var knockback_velocity: Vector2 = Vector2.ZERO
 var kill_score: int
+var velosity_overrides_available: bool = false
+var damage: float
+var stop_moving: bool = false
 
 func _ready() -> void:
 	pass
@@ -17,10 +22,18 @@ func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(_delta: float):
-	if not Game.player:
-		print("enemy cant fisnd the player")
+	if not Game.player or stop_moving:
 		return
+	
+	var distance := global_position.distance_to(Game.player.global_position)
+	
+	if distance < GameVariables.enemy_attack_distance:
+		velocity = override_velocity(velocity)
+		if velosity_overrides_available:
+			move_and_slide()
+			return
 		
+	
 	if agent.is_target_reached():
 		return
 		
@@ -32,14 +45,14 @@ func _physics_process(_delta: float):
 		new_velocity += knockback_velocity
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, GameVariables.enemy_knockback_friction * _delta)
 		knocked = true
-	
+		
 	if agent.avoidance_enabled:
 		agent.set_velocity(new_velocity)
 		if not knocked: face_direction(new_velocity)
 	else:	
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
 		if not knocked: face_direction(velocity)
-		
+	
 	move_and_slide()
 	
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
@@ -53,7 +66,7 @@ func _on_timer_timeout():
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		Game.game_over()
+		Game.player.take_damage(GameVariables.enemy_damage)
 		
 func take_damage(dmg: float)-> void:
 	var rounded_dmg = int(round(dmg)) 
@@ -70,11 +83,11 @@ func knock_back():
 	if Game.player:
 		var direction = (global_position - Game.player.global_position).normalized()
 		knockback_velocity = direction * GameVariables.enemy_knockback_strength
-	
+
 	
 func death_and_despawn():
-	
 	Game.add_score(kill_score)
 	self.queue_free()
 	
 func instansiate_inner(): pass
+func override_velocity(current_velocity: Variant): pass

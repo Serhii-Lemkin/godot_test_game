@@ -2,8 +2,14 @@ extends CharacterBase
 class_name Player
 
 @onready var weapon_container: Control = $WeaponContainer
-@export var playerSpeed = GameVariables.player_speed
+var playerSpeed = GameVariables.player_speed
+var dodge_speed = GameVariables.player_dodge_speed
+var dodge_time = GameVariables.player_dodge_time
 var isAttacking: bool = false
+var do_dodge: bool = false
+
+signal damage_taken(amount: int)
+
 func _ready():
 	speed = GameVariables.player_speed
 	Game.player = self
@@ -32,14 +38,25 @@ func clear_children(node: Node):
 		child.queue_free()
 		
 func _physics_process(delta):
-	weapon_facing_direction = get_joystick_direction("face")	
 	var move_direction = get_joystick_direction("move")	
-	if move_direction == Vector2.ZERO:
-		face_direction(weapon_facing_direction)
+	weapon_facing_direction = get_joystick_direction("face")	
+	if do_dodge:
+		var dir: Vector2 = Vector2.ZERO
+		if move_direction == Vector2.ZERO:
+			if sprite.flip_h:
+				dir = Vector2.RIGHT
+			else:
+				dir = Vector2.LEFT
+		else:
+			dir = move_direction
+		velocity = dir * dodge_speed
 	else:
-		face_direction(move_direction)
-	
-	velocity = move_direction * playerSpeed
+		if move_direction == Vector2.ZERO:
+			face_direction(weapon_facing_direction)
+		else:
+			face_direction(move_direction)
+		
+		velocity = move_direction * playerSpeed
 	move_and_slide()
 	
 func _input(event):
@@ -47,6 +64,11 @@ func _input(event):
 		isAttacking = true
 	if event.is_action_released("atack"):
 		isAttacking = false
+	if event.is_action_pressed("leap"):
+		do_dodge = true
+		get_tree().create_timer(dodge_time).timeout.connect(
+			func(): do_dodge = false
+			)
 	
 func get_joystick_direction(event: String)-> Vector2:
 	var direction := Vector2.ZERO
@@ -58,4 +80,8 @@ func get_joystick_direction(event: String)-> Vector2:
 		direction = direction.normalized()
 		
 	return direction
+	
+func take_damage(amount: int):
+	damage_taken.emit(amount)
+	print(amount)
 	

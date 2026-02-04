@@ -39,6 +39,7 @@ scale_max = 3.0
 color = Color(1, 0.90588236, 0.21960784, 1)
 
 [node name="Rifle" type="Node2D"]
+position = Vector2(0, 2)
 script = ExtResource("1_upv3j")
 damage = null
 metadata/_custom_type_script = "uid://dhixiug8snyjf"

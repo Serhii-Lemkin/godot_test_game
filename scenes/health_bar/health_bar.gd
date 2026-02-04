@@ -1,5 +1,7 @@
 extends Node2D
 class_name HealthBar
+@onready var hitbox: CollisionShape2D = $"../CollisionShape2D"
+@onready var area_colision_shape: CollisionShape2D = $"../Area2D/AreColisionShape"
 
 @export var y_offset := -40
 @export var hide_delay := 2.0
@@ -7,6 +9,8 @@ class_name HealthBar
 
 @onready var bar: ProgressBar = $Bar
 @onready var damage_layer: Node2D = $DamageLayer
+
+var dmg_scene = preload("res://scenes/health_bar/damage_numbers/damage_numbers.tscn")
 
 var _owner_entity: EnemyBase
 var _hide_timer: SceneTreeTimer
@@ -30,14 +34,12 @@ func apply_damage(amount: int, current_health: int, hit_position: Vector2):
 	spawn_damage_number(amount, hit_position)
 
 func spawn_damage_number(amount: int, hit_position: Vector2):
-	if not _owner_entity:
+	if not _owner_entity: 
 		return
-		
-	var dmg_scene = preload("res://scenes/health_bar/damage_numbers/damage_numbers.tscn")
 
 	var dmg_numbers_scene = dmg_scene.instantiate() as DamageNumbers
-	damage_layer.add_child(dmg_numbers_scene)
 	dmg_numbers_scene.global_position = hit_position
+	damage_layer.get_parent().get_parent().add_child(dmg_numbers_scene)
 	dmg_numbers_scene.setup(amount)
 	
 	var tween = get_tree().create_tween()
