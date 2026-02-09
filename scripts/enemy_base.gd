@@ -22,7 +22,18 @@ func _process(delta: float) -> void:
 	pass
 	
 func _physics_process(_delta: float):
-	if not Game.player or stop_moving:
+	if not Game.player:
+		return
+		
+	if stop_moving and knockback_velocity.length() <= 0: 
+		return 
+		
+	var knocked = false
+	if stop_moving and knockback_velocity.length() > 0:
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, GameVariables.enemy_knockback_friction * _delta)
+		knocked = true
+		velocity = knockback_velocity
+		move_and_slide()
 		return
 	
 	var distance := global_position.distance_to(Game.player.global_position)
@@ -40,7 +51,6 @@ func _physics_process(_delta: float):
 	var current_position = global_position
 	var next_position = agent.get_next_path_position()
 	var new_velocity = current_position.direction_to(next_position) * speed
-	var knocked = false
 	if knockback_velocity.length() > 0:
 		new_velocity += knockback_velocity
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, GameVariables.enemy_knockback_friction * _delta)

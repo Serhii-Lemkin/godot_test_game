@@ -3,6 +3,7 @@ extends Node
 var player_speed := 200.0
 var player_dodge_speed := 700.0
 var player_dodge_time := 0.2
+var player_dodge_cooldown := 2.5
 var player_crit_chance:= 0.1
 var player_crit_multiplier := 2.0
 var player_rotation_atack_debuff := 0.2
